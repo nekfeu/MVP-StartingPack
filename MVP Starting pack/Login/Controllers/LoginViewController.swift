@@ -10,21 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    var presenter: LoginPresenter?
+    private lazy var presenter = {
+        return LoginPresenter(delegate: self)
+    }()
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupPresenter()
     }
-
-    func setupPresenter() {
-        presenter = LoginPresenter(delegate: self)
-    }
-
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         presenter?.signIn(email: emailField.text, password: passwordField.text)
