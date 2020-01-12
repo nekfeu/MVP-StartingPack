@@ -5,6 +5,9 @@ my_array=("Adding architecture and getParks method in service." "Adding spaces r
 for i in "${my_array[@]}";
 do
         echo $i > test.test
-	git commit -am $i
+	sleep 1
+	git commit -am "$i"
+	sleep 1
 	git push origin master
+	sleep 1
 done
